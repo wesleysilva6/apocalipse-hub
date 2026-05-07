@@ -19,7 +19,7 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["src", "components/ui", "types", "utils", "data", "vite.config.ts"],
+  "include": ["src", "api", "components/ui", "types", "utils", "data", "vite.config.ts"],
   "exclude": ["app", "lib", "services", "components/admin", "components/cards", "components/layouts", "components/sections", "components/vitrine"],
   "references": []
 }

@@ -4284,9 +4284,9 @@ async function aiSettingsRequest(method: "GET" | "POST", body?: Record<string, u
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
       body: body ? JSON.stringify(body) : undefined
     });
-    return await response.json() as { ok: boolean; error?: string; settings?: Record<string, any> };
+    return await parseApiJson(response) as { ok: boolean; error?: string; settings?: Record<string, any> };
   } catch {
-    return { ok: false, error: "API segura indisponível localmente. Use Vercel ou vercel dev para testar." };
+    return { ok: false, error: "API segura indisponível. Use o deploy da Vercel ou rode com Vercel Functions para testar IA." };
   }
 }
 
@@ -4298,10 +4298,18 @@ async function callAi(feature: string, input: Record<string, unknown>) {
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
       body: JSON.stringify({ feature, input })
     });
-    return await response.json() as { ok: boolean; text: string; data?: any; error?: string };
+    return await parseApiJson(response) as { ok: boolean; text: string; data?: any; error?: string };
   } catch {
-    return { ok: false, text: "", error: "API de IA indisponível localmente. Use Vercel ou vercel dev para testar." };
+    return { ok: false, text: "", error: "API de IA indisponível. Use o deploy da Vercel ou rode com Vercel Functions para testar IA." };
   }
+}
+
+async function parseApiJson(response: Response) {
+  const text = await response.text();
+  if (text.trim().startsWith("<!doctype") || text.trim().startsWith("<html")) {
+    throw new Error("API route served HTML instead of JSON.");
+  }
+  return JSON.parse(text);
 }
 
 function useStore() {

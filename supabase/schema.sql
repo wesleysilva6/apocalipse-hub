@@ -338,6 +338,7 @@ create index if not exists integration_events_created_at_idx on public.integrati
 create index if not exists ai_insights_created_at_idx on public.ai_insights(created_at);
 create index if not exists ai_usage_logs_created_at_idx on public.ai_usage_logs(created_at);
 create index if not exists ai_usage_logs_feature_idx on public.ai_usage_logs(feature);
+create index if not exists ai_usage_logs_user_created_idx on public.ai_usage_logs(user_id, created_at);
 create index if not exists admin_profiles_email_idx on public.admin_profiles(email);
 create index if not exists admin_activity_logs_created_at_idx on public.admin_activity_logs(created_at);
 create index if not exists story_campaigns_slug_idx on public.story_campaigns(slug);
