@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&family=Sora:wght@600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 160 23% 3%;
+  --foreground: 210 40% 98%;
+  --card: 160 29% 5%;
+  --card-foreground: 210 40% 98%;
+  --primary: 142 69% 58%;
+  --primary-foreground: 155 35% 6%;
+  --muted: 165 18% 10%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 356 74% 28%;
+  --accent-foreground: 160 26% 92%;
+  --destructive: 356 74% 28%;
+  --destructive-foreground: 160 26% 92%;
+  --border: 145 16% 18%;
+  --input: 145 16% 18%;
+  --ring: 138 100% 72%;
+  color-scheme: dark;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 0%, rgba(74, 222, 128, 0.10), transparent 28%),
+    radial-gradient(circle at 86% 12%, rgba(127, 29, 29, 0.20), transparent 30%),
+    linear-gradient(180deg, #050807 0%, #080d0b 48%, #050807 100%);
+  color: hsl(var(--foreground));
+  font-family: "Inter", system-ui, sans-serif;
+  margin: 0;
+}
+
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 100% 3px;
+  mix-blend-mode: screen;
+  opacity: 0.18;
+}
+
+body::after {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.035;
+  background-position: 0 0, 0 0, 12px 21px, 12px 21px;
+  background-size: 24px 42px;
+}
+
+::selection {
+  background: rgba(115, 255, 154, 0.28);
+  color: #f2fff8;
+}
+
+.terminal-grid {
+  background-image:
+    linear-gradient(rgba(115, 255, 154, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(115, 255, 154, 0.08) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+}
+
+.font-display {
+  font-family: "Sora", "Inter", system-ui, sans-serif;
+}
+
+.font-mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+.public-surface {
+  background:
+    radial-gradient(circle at 20% 15%, rgba(74, 222, 128, 0.08), transparent 26%),
+    radial-gradient(circle at 82% 30%, rgba(127, 29, 29, 0.15), transparent 30%),
+    #050807;
+}
